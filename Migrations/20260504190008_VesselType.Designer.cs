@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using kilozdazolik.WaterLogger.Data;
 
@@ -10,9 +11,11 @@ using kilozdazolik.WaterLogger.Data;
 namespace kilozdazolik.WaterLogger.Migrations
 {
     [DbContext(typeof(WaterLoggerContext))]
-    partial class WaterLoggerContextModelSnapshot : ModelSnapshot
+    [Migration("20260504190008_VesselType")]
+    partial class VesselType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.7");
@@ -61,10 +64,7 @@ namespace kilozdazolik.WaterLogger.Migrations
                     b.Property<DateTime>("Timestamp")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("VesselTypeId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Volume")
+                    b.Property<int>("VesselTypeId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -78,7 +78,9 @@ namespace kilozdazolik.WaterLogger.Migrations
                 {
                     b.HasOne("kilozdazolik.WaterLogger.Models.VesselType", "VesselType")
                         .WithMany("WaterLogs")
-                        .HasForeignKey("VesselTypeId");
+                        .HasForeignKey("VesselTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("VesselType");
                 });

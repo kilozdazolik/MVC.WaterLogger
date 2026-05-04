@@ -3,7 +3,7 @@
         public class DailyGoal
         {
             public int Id { get; set; }
-            public int GoalMl { get; set; } = 0;
+            public int GoalMl { get; set; } = 2000;
             public DateTime Date { get; set; }
-    }
+        }
     }
