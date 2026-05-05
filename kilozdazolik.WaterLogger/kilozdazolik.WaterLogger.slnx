@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../kilozdazolik.WaterLogger.Tests/kilozdazolik.WaterLogger.Tests.csproj" Id="25de16f5-9bec-4904-a08f-a23994329c31" />
+  <Project Path="kilozdazolik.WaterLogger.csproj" />
+</Solution>

@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<WaterLoggerContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("ConnectionString")));
+builder.Services.AddScoped<kilozdazolik.WaterLogger.Services.IWaterLogService, kilozdazolik.WaterLogger.Services.WaterLogService>();
 
 var app = builder.Build();
 
